@@ -1,0 +1,11 @@
+version: '2'
+services:
+  backend:
+    image: registry-gitlab.sabin.com.br/sabin/room-reservation
+    restart: always
+    environment:
+      DJANGO_SETTINGS_MODULE: room_reservation.settings.prod
+    ports:
+      - 9511:9010
+    volumes:
+      - "/var/www/reserva-sala.sabin.com.br/media:/app/www/media"

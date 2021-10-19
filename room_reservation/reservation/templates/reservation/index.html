@@ -1,0 +1,114 @@
+{% extends "master_tpl.html" %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/jquery.datetimepicker.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/panel.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+{% block js %}
+    <script src="{% static 'js/jquery.datetimepicker.full.min.js' %}"></script>
+    <script src="{% static 'js/portal.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid big-filter px-md-4">
+        <div class="row row-header">
+            <div class="col-sm-12 my-reserve">
+                <a href="{% url 'reservation_reservations' %}"
+                   class=" btn-sm btn-primary float-right text-decoration-none">Minhas Reservas</a>
+                <h1 class="text-sm-left text-info">Reserva de Salas</h1>
+            </div>
+
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <form action="" method="get">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-6">
+                            <div class="form-group">
+                                <label for="p_number" class="sr-only">N° de pessoas / reunião</label>
+                                <input value="{{ form.number_people }}" name="number_people" type="number"
+                                       class="form-control" id="p_number" placeholder="Número de pessoas" min="2" required="true">
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="form-group">
+                                <label for="dateInit" class="sr-only">Data de inicio</label>
+                                <input autocomplete="off" value="{{ form.date_init | date:'d/m/Y H:i' }}"
+                                       name="date_init" required type="text" class="form-control datetimepicker"
+                                       id="dateInit" placeholder="Data inicial">
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="form-group">
+                                <label for="dateEnd" class="sr-only">Data de fim</label>
+                                <input autocomplete="off" value="{{ form.date_end | date:'d/m/Y H:i' }}" name="date_end"
+                                       required type="text" class="form-control datetimepicker" id="dateEnd"
+                                       placeholder="Data final">
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-6 more-resources">
+                            <div class="form-group">
+                                <a href="#" class="form-control dropdown-toggle" id="more_resources"
+                                   data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false" style="width: 190px;">
+                                    Recursos necessários
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="more_resources">
+                                    {% for room_property in room_properties %}
+                                        <label class="dropdown-item" for="room_{{ room_property.id }}_property">
+                                            <input value="{{ room_property.id }}" name="room_property" type="checkbox"
+                                                   id="room_{{ room_property.id }}_property"> {{ room_property.name }}
+                                        </label>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Filtrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% if form.number_people or form.date_init or form.date_end or room_property %}
+        <div class="container-fluid px-md-4 room-list">
+            <div class="row my-reserve">
+                {% for room in rooms %}
+                    <div class="col-sm-6 col-md-3 room-card">
+                        <div class="card">
+                            {% if room.cover %}
+                                <img src="{{ room.cover.url }}" alt="" width="100%" height="180">
+                            {% else %}
+                                <img src="https://via.placeholder.com/780x520" class="d-block w-100" width="100%"
+                                     height="180" alt="...">
+                            {% endif %}
+
+                            <div class="card-body">
+                                <h5 class="card-title">{{ room.name }}</h5>
+                                <a href="{% url 'reservation_room_detail' room.id %}?date_init={{ form.date_init | date:'d/m/Y H:i' }}&date_end={{ form.date_end | date:'d/m/Y H:i' }}&number_people={{ form.number_people }}"
+                                   class="btn btn-primary">Agendar</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+    {% if not form %}
+        <div class="col-md-4 offset-4">
+            <div class="alert alert-primary text-center" role="alert">Utilize os filtros para encontrar seu espaço ideal
+                ;)
+            </div>
+        </div>
+    {% endif %}
+
+
+    {% if not rooms %}
+        <div class="col-md-6 offset-3">
+            <div class="alert alert-primary text-center" role="alert">Não encontramos um espaço compatível com a sua busca.</div>
+        </div>
+    {% endif %}
+{% endblock %}
+

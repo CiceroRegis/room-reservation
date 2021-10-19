@@ -1,0 +1,10 @@
+Django==2.2.2
+gunicorn==19.9.0
+mysqlclient==1.4.1
+ldap3==2.6
+pyasn1==0.4.5
+pytz==2019.1
+sqlparse==0.3.0
+Pillow==6.1.0
+django-filebrowser-no-grappelli==3.7.8
+ics==0.5

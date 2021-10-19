@@ -1,0 +1,64 @@
+.alert {
+    border-radius: 0;
+    margin-top: -16px;
+}
+.big-filter {
+    background-color: #f3f3f3;
+    margin-top: -15px;
+    margin-bottom: 85px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.big-filter h1 {
+    font-size: 1.6em;
+    margin-top: 2px;
+}
+.big-filter .row-header {
+    margin-bottom: 15px;
+}
+.big-filter .card {
+    margin-bottom: -70px;
+}
+.big-filter .more-resources .form-group {
+    margin-right: 15px;
+}
+.room-list .room-card {
+    margin-bottom: 30px;
+}
+.my-reserve .card {
+    margin-bottom: 30px;
+}
+#id_linkRoom,
+#id_reservationResource {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+#id_linkRoom > li,
+#id_reservationResource > li {
+    display: inline;
+    margin-left: 10px;
+}
+#id_linkRoom {
+    margin-bottom: 20px;
+}
+#id_linkRoom > li {
+    border: 1px solid #ced4da;
+    border-radius: 3px;
+    padding: 10px;
+    background-color: #f0f3f7;
+}
+#id_linkRoom > li > label {
+    cursor: pointer;
+}
+
+#room_carousel {
+    margin-bottom: 20px;
+}
+
+.cont_email_guest {
+    margin-bottom: 15px;
+}
+.guest_item {
+    margin-right: 5px;
+}

@@ -1,0 +1,16 @@
+Statics:
+  stage: prepare
+  only:
+    - master
+    - develop
+  variables:
+    DEST_PATH: /var/www/reserva-sala.sabin.com.br/static
+    APP_CONF: DJANGO_SETTINGS_MODULE=room_reservation.settings.prod
+  before_script:
+    - ssh-keyscan -H $SERVER_IP >> ~/.ssh/known_hosts
+    - sshpass -p $SERVER_USER_PASS ssh-copy-id $SERVER
+    - docker login -u ${CI_REGISTRY_USER} -p ${CI_JOB_TOKEN} ${CI_REGISTRY}
+  script:
+    - docker run --rm -u 0 -e $APP_CONF -v $(pwd)/static:/app/www $IMAGE python manage.py collectstatic --noinput
+    - scp -r $(pwd)/static/* $SERVER:$DEST_PATH
+    - ssh $SERVER "chmod 755 -R ${DEST_PATH}"

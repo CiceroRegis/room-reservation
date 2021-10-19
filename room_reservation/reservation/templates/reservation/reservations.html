@@ -1,0 +1,41 @@
+{% extends "master_tpl.html" %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/panel.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid px-md-4">
+    <div class="row">
+        <div class="col-sm-4">
+            <h2 class="text-info">Minhas reservas</h2>
+        </div>
+    </div>
+
+    <div class="row my-reserve">
+        {% for r in reservations %}
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ r.room.name }} <span class="badge {% if r.booked %}badge-success{% else %}badge-warning{% endif %}">
+                        {% if r.booked %}Reservada{% else %}Aguardando aprovação{% endif %}</span></h5>
+                    <p class="card-text">{{ r.dateInitial | date:'d/m/Y H:i' }}<br>{{ r.dateFinal | date:'d/m/Y H:i' }}</p>
+
+                    <ul>
+                        {% for foo in r.linked_rooms.all %}
+                        <li> Auditório vinculado: <b>{{ foo.room.name }}</b></li>
+                        {% endfor %}
+                    </ul>
+                    <a href="{% url 'reservation_cancel' r.id %}" class="card-link text-danger">Cancelar</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% if not reservations %}
+        <div class="col-md-6 offset-4">
+            <div class="alert alert-primary text-center" role="alert">Você não possui reservas.</div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

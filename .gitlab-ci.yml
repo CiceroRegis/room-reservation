@@ -1,0 +1,83 @@
+image: dockerci:latest
+
+variables:
+  DOCKER_DRIVER: overlay2
+  IMAGE: registry-gitlab.sabin.com.br/sabin/room-reservation
+
+services:
+- name: docker:dind
+
+stages:
+  - build
+  - prepare
+  - deploy
+
+before_script:
+  - docker info
+  - docker login -u ${CI_REGISTRY_USER} -p ${CI_JOB_TOKEN} ${CI_REGISTRY}
+
+Build:
+  stage: build
+  only:
+    - master
+    - develop
+  script:
+    - docker build --tag $IMAGE .
+    - docker push $IMAGE
+
+Tests:
+  stage: prepare
+  only:
+    - master
+    - develop
+  script:
+    - docker run --rm $IMAGE python manage.py test
+
+Dd Prod Migration:
+  stage: prepare
+  variables:
+    APP_CONF: DJANGO_SETTINGS_MODULE=room_reservation.settings.prod
+  only:
+    - master
+  script:
+    - docker run --rm -e $APP_CONF $IMAGE python manage.py migrate
+
+Dd Beta Migration:
+  stage: prepare
+  variables:
+    APP_CONF: DJANGO_SETTINGS_MODULE=room_reservation.settings.prod
+    APP_DB: MYSQL_NAME=room_reservation_beta
+  only:
+    - develop
+  script:
+    - docker run --rm -e $APP_CONF -e $APP_DB $IMAGE python manage.py migrate
+
+Beta:
+  stage: deploy
+  only:
+    - develop
+  environment:
+    name: staging
+    url: https://reserva-sala-beta.sabin.com.br
+  before_script:
+    - ssh-keyscan -H $SERVER_IP >> ~/.ssh/known_hosts
+    - sshpass -p $SERVER_USER_PASS ssh-copy-id $SERVER
+  script:
+    - scp docker-compose-beta.yml $SERVER:/home/gitlab
+    - ssh $SERVER "docker login -u ${CI_REGISTRY_USER} -p ${CI_JOB_TOKEN} ${CI_REGISTRY} && docker pull ${IMAGE}"
+    - ssh $SERVER "docker-compose -f docker-compose-beta.yml -p reserva_sala_beta up -d && rm -f docker-compose-beta.yml"
+
+Production:
+  stage: deploy
+  only:
+    - master
+  environment:
+    name: production
+    url: https://reserva-sala.sabin.com.br
+  before_script:
+    - ssh-keyscan -H $SERVER_IP >> ~/.ssh/known_hosts
+    - sshpass -p $SERVER_USER_PASS ssh-copy-id $SERVER
+  script:
+    - scp docker-compose.yml $SERVER:/home/gitlab
+    - ssh $SERVER "docker login -u ${CI_REGISTRY_USER} -p ${CI_JOB_TOKEN} ${CI_REGISTRY} && docker pull ${IMAGE}"
+    - ssh $SERVER "docker-compose -f docker-compose.yml -p reserva_sala up -d && rm -f docker-compose.yml"

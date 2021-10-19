@@ -1,0 +1,15 @@
+.env
+.idea
+.vscode
+.DS_Store
+.venv
+venv
+build
+dist
+__pycache__
+*.spec
+*.log
+*.spec
+*.sqlite*
+*.ics
+.settings

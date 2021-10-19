@@ -1,0 +1,258 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-12-04 10:54-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: room_reservation/core/apps.py:7
+msgid "Structure and Organization"
+msgstr "Estrutura e Oganização"
+
+#: room_reservation/core/models.py:23 room_reservation/core/models.py:36
+#: room_reservation/core/models.py:198
+msgid "User"
+msgstr "Usuário"
+
+#: room_reservation/core/models.py:28
+msgid "Notify when reservation approved"
+msgstr "Notificar quando a reserva for aprovada"
+
+#: room_reservation/core/models.py:33
+msgid "Notification"
+msgstr "Notificação para equipe de apoio"
+
+#: room_reservation/core/models.py:35
+msgid "Action"
+msgstr "Ação"
+
+#: room_reservation/core/models.py:45 room_reservation/core/models.py:46
+#: room_reservation/core/models.py:74
+msgid "Room Type"
+msgstr "Tipos de sala"
+
+#: room_reservation/core/models.py:48 room_reservation/core/models.py:61
+#: room_reservation/core/models.py:85 room_reservation/core/models.py:148
+#: room_reservation/core/models.py:161 room_reservation/core/models.py:174
+#: room_reservation/core/models.py:186
+msgid "Name"
+msgstr "Nome"
+
+#: room_reservation/core/models.py:58 room_reservation/core/models.py:59
+msgid "RoomProperty"
+msgstr "Recursos de sala"
+
+#: room_reservation/core/models.py:62
+msgid "amount"
+msgstr "Quantidade"
+
+#: room_reservation/core/models.py:72 room_reservation/core/models.py:121
+#: room_reservation/core/models.py:137 room_reservation/core/models.py:199
+msgid "Room"
+msgstr "Sala"
+
+#: room_reservation/core/models.py:75
+msgid "Linked room"
+msgstr "Salas compartilhadas"
+
+#: room_reservation/core/models.py:77
+msgid "Allow room property"
+msgstr "Permitir propriedades de sala"
+
+#: room_reservation/core/models.py:78
+msgid "if this option is checked the room properties will be shown."
+msgstr "Caso esta opção seja marcada as propriedades de sala serão mostradas"
+
+#: room_reservation/core/models.py:79
+msgid "video conferecing option"
+msgstr "Possui video conferência"
+
+#: room_reservation/core/models.py:80
+msgid ""
+"if this option is checked Time limit for schedules of up to 4 hours per "
+"period (morning and afternoon)"
+msgstr ""
+"Caso esta opçao seja marcada o limite de horário para agendamentos será de "
+"no máximo 4 horas por período (manhã e tarde)."
+
+#: room_reservation/core/models.py:84
+msgid "Room Property"
+msgstr "Propriedades de sala."
+
+#: room_reservation/core/models.py:86
+msgid "People number"
+msgstr "Número de pessoas"
+
+#: room_reservation/core/models.py:88 room_reservation/core/models.py:218
+msgid "Description"
+msgstr "Descrição"
+
+#: room_reservation/core/models.py:90
+msgid "Room model type"
+msgstr "Formatos de sala"
+
+#: room_reservation/core/models.py:91
+msgid "if this option is checked the Room model type will be shown."
+msgstr "Caso esta opção seja marcada os formatos de sala serão mostrados."
+
+#: room_reservation/core/models.py:92
+msgid "Auto Reserve"
+msgstr "Reservar automaticamente"
+
+#: room_reservation/core/models.py:110
+msgid "Left"
+msgstr "Esquerda"
+
+#: room_reservation/core/models.py:111
+msgid "Right"
+msgstr "Direita"
+
+#: room_reservation/core/models.py:112
+msgid "Top"
+msgstr "A cima"
+
+#: room_reservation/core/models.py:113
+msgid "Down"
+msgstr "a baixo"
+
+#: room_reservation/core/models.py:118
+msgid "Room Link"
+msgstr "Salas vinculadas"
+
+#: room_reservation/core/models.py:124
+msgid "Room location"
+msgstr "Posição da sala"
+
+#: room_reservation/core/models.py:125
+msgid "Room position"
+msgstr "Tipos de sala"
+
+#: room_reservation/core/models.py:135
+msgid "room images"
+msgstr "Imagem das salas"
+
+#: room_reservation/core/models.py:138
+msgid "Image"
+msgstr "Imagem"
+
+#: room_reservation/core/models.py:145 room_reservation/core/models.py:146
+#: room_reservation/core/models.py:206
+msgid "Reservation Type"
+msgstr "Tipos de Reserva"
+
+#: room_reservation/core/models.py:158 room_reservation/core/models.py:159
+#: room_reservation/core/models.py:208
+msgid "Reservation Public"
+msgstr "Público alvo"
+
+#: room_reservation/core/models.py:171 room_reservation/core/models.py:172
+msgid "Reservation Room Formats"
+msgstr "Formatos de sala"
+
+#: room_reservation/core/models.py:184 room_reservation/core/models.py:212
+msgid "Reservation resources"
+msgstr "Serviços de copa"
+
+#: room_reservation/core/models.py:196 room_reservation/reservation/apps.py:7
+msgid "Reservation"
+msgstr "Reserva"
+
+#: room_reservation/core/models.py:202
+msgid "Linked Room"
+msgstr "Salas vinculadas"
+
+#: room_reservation/core/models.py:210
+msgid "Reservation Room Format"
+msgstr "Formato da sala"
+
+#: room_reservation/core/models.py:217
+msgid "Event name"
+msgstr "Nome do evento"
+
+#: room_reservation/core/models.py:219
+msgid "Initial date"
+msgstr "Data Inicial"
+
+#: room_reservation/core/models.py:220
+msgid "Final date"
+msgstr "Data Final"
+
+#: room_reservation/core/models.py:221
+msgid "Number of guests"
+msgstr "Número de pessoas"
+
+#: room_reservation/core/models.py:222
+msgid "Guests"
+msgstr "Convidados"
+
+#: room_reservation/core/models.py:223
+msgid "Booked"
+msgstr "Reservada"
+
+#: room_reservation/reservation/views.py:68
+#: room_reservation/reservation/views.py:138
+msgid "Dates don't match."
+msgstr "data invalida!"
+
+#: room_reservation/reservation/views.py:80
+#: room_reservation/reservation/views.py:160
+msgid "Minimum scheduling time is 30 minutes."
+msgstr "Tempo mínimo é de 30 minutos."
+
+#: room_reservation/reservation/views.py:84
+#: room_reservation/reservation/views.py:164
+msgid "Scheduling period cannot be longer than 3 days."
+msgstr "O período de agendamento não pode ser maior que 3 dias."
+
+#: room_reservation/reservation/views.py:132
+msgid "Your form contains some error."
+msgstr "Seu formulário contém algum erro"
+
+#: room_reservation/reservation/views.py:149
+msgid "This room are reserved."
+msgstr "O espaço encontra-se ocupado."
+
+#: room_reservation/reservation/views.py:170
+msgid "schedules of up to 4 hours per period"
+msgstr "Limite de horário para agendamentos será de no máximo 4 horas por período (manhã e tarde) para salas que possuem video conferência."
+
+#: room_reservation/reservation/views.py:188
+msgid "Room are reserved for this period."
+msgstr "Sala não pode ser reservada neste período"
+
+#: room_reservation/reservation/views.py:195
+msgid "This room exceeded limit of people."
+msgstr "Esta sala excedeu o limite de pessoas"
+
+#: room_reservation/reservation/views.py:226
+msgid "Your reservation is saved."
+msgstr "Solicitação de reserva efetuada com sucesso!"
+
+#: room_reservation/reservation/views.py:230
+msgid "Some error occurred during booking."
+msgstr "Ocorreu um erro durante a reserva"
+
+#: room_reservation/reservation/views.py:270
+msgid "This reservation not found."
+msgstr "Está reserva não pode ser cancelada"
+
+#: room_reservation/reservation/views.py:277
+msgid "Reservation canceled."
+msgstr "Reserva cancelada com sucesso!"
+
+#: room_reservation/reservation/views.py:279
+msgid "Reservation not canceled."
+msgstr "Está reserva não pode ser cancelada"
